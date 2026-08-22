@@ -1,0 +1,16 @@
+<section class="memories" aria-labelledby="memories-title">
+  <div class="memories__toolbar">
+    <p class="memories__count"><strong>{{ visibleMemories().length }}</strong> memories saved</p>
+    <div class="memories__filters" aria-label="Filter memories">
+      <button [class.is-active]="selectedFilter() === 'all'" (click)="setFilter('all')">All</button>
+      <button [class.is-active]="selectedFilter() === 'with-image'" (click)="setFilter('with-image')">With images</button>
+      <button [class.is-active]="selectedFilter() === 'notes'" (click)="setFilter('notes')">Notes only</button>
+    </div>
+  </div>
+
+  <div class="memories__grid">
+    @for (memory of visibleMemories(); track memory.id) {
+      <app-memory [item]="memory" />
+    }
+  </div>
+</section>
