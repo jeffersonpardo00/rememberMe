@@ -1,0 +1,65 @@
+:host { display: block; }
+
+.memories__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.memories__count {
+  margin: 0;
+  color: #66736a;
+  font-size: 0.85rem;
+}
+
+.memories__count strong {
+  color: #242c27;
+  font: 600 1.2rem 'Fraunces', Georgia, serif;
+}
+
+.memories__filters {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.memories__filters button {
+  border: 1px solid rgba(36, 44, 39, 0.18);
+  border-radius: 999px;
+  padding: 0.55rem 0.85rem;
+  background: transparent;
+  color: #526057;
+  cursor: pointer;
+  font: 600 0.72rem 'DM Mono', monospace;
+  letter-spacing: 0.01em;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.memories__filters button:hover,
+.memories__filters button.is-active {
+  border-color: #242c27;
+  background: #242c27;
+  color: #f8f6ef;
+}
+
+.memories__grid {
+  column-count: 3;
+  column-gap: 1.25rem;
+}
+
+.memories__grid app-memory {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 1.25rem;
+}
+
+@media (max-width: 800px) {
+  .memories__grid { column-count: 2; }
+}
+
+@media (max-width: 560px) {
+  .memories__toolbar { align-items: flex-start; flex-direction: column; }
+  .memories__filters { flex-wrap: wrap; }
+  .memories__grid { column-count: 1; }
+}

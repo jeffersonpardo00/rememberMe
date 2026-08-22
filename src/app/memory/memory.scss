@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  break-inside: avoid;
+}
+
+.memory-card {
+  overflow: hidden;
+  border: 1px solid rgba(36, 44, 39, 0.12);
+  border-radius: 5px;
+  background: #f8f6ef;
+  box-shadow: 0 10px 26px rgba(40, 48, 38, 0.06);
+  color: #242c27;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-4px) rotate(-0.35deg);
+  box-shadow: 0 18px 32px rgba(40, 48, 38, 0.12);
+}
+
+.memory-card__image {
+  display: block;
+  width: 100%;
+  max-height: 290px;
+  object-fit: cover;
+}
+
+.memory-card__body {
+  padding: 1.2rem 1.25rem 1.35rem;
+}
+
+.memory-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #66736a;
+  font: 600 0.7rem/1.2 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.memory-card__mark {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #db6b45;
+}
+
+.memory-card h3 {
+  margin: 0.75rem 0 0.45rem;
+  font: 600 1.45rem/1.05 'Fraunces', Georgia, serif;
+  letter-spacing: 0;
+}
+
+.memory-card p {
+  margin: 0;
+  color: #526057;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.memory-card--sun { background: #f7e6a4; }
+.memory-card--clay { background: #e8b39a; }
+.memory-card--mint { background: #c7d9c4; }
+.memory-card--sky { background: #c7dbe1; }
+.memory-card--rose { background: #efd0c5; }
+
+.memory-card--sun .memory-card__mark { background: #aa7113; }
+.memory-card--mint .memory-card__mark { background: #47765e; }
+.memory-card--sky .memory-card__mark { background: #397185; }
+.memory-card--rose .memory-card__mark { background: #a34e57; }

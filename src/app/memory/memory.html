@@ -1,0 +1,18 @@
+<article class="memory-card" [class]="'memory-card memory-card--' + item().tone">
+  @if (item().image) {
+    <img
+      class="memory-card__image"
+      [src]="item().image"
+      [alt]="item().imageAlt || ''"
+      loading="lazy"
+    />
+  }
+  <div class="memory-card__body">
+    <div class="memory-card__meta">
+      <span class="memory-card__mark" aria-hidden="true"></span>
+      <time>{{ item().date }}</time>
+    </div>
+    <h3>{{ item().title }}</h3>
+    <p>{{ item().text }}</p>
+  </div>
+</article>
