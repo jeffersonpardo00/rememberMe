@@ -1,16 +1,20 @@
 <section class="memories" aria-labelledby="memories-title">
   <div class="memories__toolbar">
-    <p class="memories__count"><strong>{{ visibleMemories().length }}</strong> memories saved</p>
-    <div class="memories__filters" aria-label="Filter memories">
-      <button [class.is-active]="selectedFilter() === 'all'" (click)="setFilter('all')">All</button>
-      <button [class.is-active]="selectedFilter() === 'with-image'" (click)="setFilter('with-image')">With images</button>
-      <button [class.is-active]="selectedFilter() === 'notes'" (click)="setFilter('notes')">Notes only</button>
+    <p class="memories__count"><strong>{{ visibleMemories().length }}</strong> recuerdos guardados</p>
+    <div class="memories__filters" aria-label="Filtrar recuerdos">
+      <button [class.is-active]="selectedFilter() === 'all'" (click)="setFilter('all')">Todos</button>
+      <button [class.is-active]="selectedFilter() === 'with-image'" (click)="setFilter('with-image')">Con imágenes</button>
+      <button [class.is-active]="selectedFilter() === 'notes'" (click)="setFilter('notes')">Solo notas</button>
     </div>
   </div>
 
   <div class="memories__grid">
     @for (memory of visibleMemories(); track memory.id) {
-      <app-memory [item]="memory" />
+      <app-memory [item]="memory" (selected)="openDetail($event)" />
     }
   </div>
 </section>
+
+@if (selectedMemory(); as memory) {
+  <app-memory-detail [item]="memory" (closed)="closeDetail()" />
+}

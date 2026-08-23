@@ -1,20 +1,24 @@
 <main class="page-shell">
   <header class="page-header">
-    <a class="brand" href="/" aria-label="Remember Me home">
+    <a class="brand" href="/" aria-label="Inicio de Remember Me">
       <span class="brand__symbol" aria-hidden="true">R</span>
       <span>remember<span class="brand__accent">/</span>me</span>
     </a>
-    <p class="page-header__date">A little archive of a life</p>
-    <button class="add-button" type="button" aria-label="Add a new memory">+ <span>New memory</span></button>
+    <p class="page-header__date">Un pequeño archivo de vida</p>
+    <button class="add-button" type="button" aria-label="Crear un recuerdo" (click)="openNewMemory()">+ <span>Nuevo recuerdo</span></button>
   </header>
 
   <section class="intro" aria-labelledby="page-title">
     <div>
-      <p class="eyebrow">Personal archive · 2024—2025</p>
-      <h1 id="page-title">Keep the good<br /><em>bits.</em></h1>
+      <p class="eyebrow">Archivo personal · 2024—2025</p>
+      <h1 id="page-title">Guarda los<br /><em>momentos.</em></h1>
     </div>
-    <p class="intro__copy">A soft place for the days worth holding onto. The loud ones, the quiet ones, and everything in between.</p>
+    <p class="intro__copy">Un lugar para guardar los días que merecen quedarse. Los ruidosos, los tranquilos y todo lo que hay entre ellos.</p>
   </section>
 
   <app-memories-gird />
 </main>
+
+@if (isNewMemoryOpen()) {
+  <app-new-memory (closed)="closeNewMemory()" (submitted)="saveNewMemory($event)" />
+}

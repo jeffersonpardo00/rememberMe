@@ -18,6 +18,11 @@
   box-shadow: 0 18px 32px rgba(40, 48, 38, 0.12);
 }
 
+.memory-card:focus-visible {
+  outline: 3px solid #db6b45;
+  outline-offset: 4px;
+}
+
 .memory-card__image {
   display: block;
   width: 100%;
@@ -44,6 +49,10 @@
   height: 0.45rem;
   border-radius: 50%;
   background: #db6b45;
+}
+
+.memory-card__separator {
+  color: rgba(82, 96, 87, 0.55);
 }
 
 .memory-card h3 {

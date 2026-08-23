@@ -1,0 +1,59 @@
+<div class="modal-backdrop" role="presentation" (click)="closed.emit()">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="new-memory-title" (click)="$event.stopPropagation()">
+    <header class="modal__header">
+      <div>
+        <p class="eyebrow">Nueva entrada</p>
+        <h2 id="new-memory-title">Guardar un momento</h2>
+      </div>
+      <button class="close-button" type="button" aria-label="Cerrar ventana" (click)="closed.emit()">×</button>
+    </header>
+
+    <form [formGroup]="memoryForm" (ngSubmit)="submit()">
+      <label class="field">
+        <span>¿Qué quieres recordar? <small>Obligatorio</small></span>
+        <textarea formControlName="text" maxlength="280" rows="5" placeholder="Escribe algo para tu yo del futuro..."></textarea>
+        <span class="field__footer">
+          @if (memoryForm.controls.text.invalid && memoryForm.controls.text.touched) {
+            <small class="error">Escribe un recuerdo de hasta 280 caracteres.</small>
+          } @else {
+            <small>Un instante también puede ser suficiente.</small>
+          }
+          <small>{{ textLength }}/280</small>
+        </span>
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Título <small>Opcional</small></span>
+          <input formControlName="title" type="text" maxlength="80" placeholder="Una tarde cualquiera" />
+        </label>
+        <label class="field">
+          <span>Autor <small>Opcional</small></span>
+          <input formControlName="author" type="text" maxlength="50" placeholder="Tu nombre" />
+        </label>
+      </div>
+
+      <div class="field">
+        <span>Imagen <small>Opcional</small></span>
+        @if (imagePreview(); as preview) {
+          <div class="upload-preview">
+            <img [src]="preview" alt="Vista previa de la imagen seleccionada" />
+            <button type="button" class="remove-image" (click)="removeImage()">Quitar imagen</button>
+          </div>
+        } @else {
+          <label class="upload-zone" for="memory-image">
+            <span class="upload-zone__icon" aria-hidden="true">↑</span>
+            <strong>Elige una imagen</strong>
+            <span>JPG, PNG o WEBP · máximo 10 MB</span>
+            <input id="memory-image" type="file" accept="image/jpeg,image/png,image/webp" (change)="onFileSelected($event)" />
+          </label>
+        }
+      </div>
+
+      <footer class="modal__actions">
+        <button class="button button--quiet" type="button" (click)="closed.emit()">Cancelar</button>
+        <button class="button button--primary" type="submit">Guardar recuerdo</button>
+      </footer>
+    </form>
+  </section>
+</div>

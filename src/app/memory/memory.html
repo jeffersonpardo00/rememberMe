@@ -1,4 +1,13 @@
-<article class="memory-card" [class]="'memory-card memory-card--' + item().tone">
+<article
+  class="memory-card"
+  [class]="'memory-card memory-card--' + item().tone"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="'Ver el recuerdo: ' + item().title"
+  (click)="openDetail()"
+  (keydown.enter)="openDetail()"
+  (keydown.space)="$event.preventDefault(); openDetail()"
+>
   @if (item().image) {
     <img
       class="memory-card__image"
@@ -11,6 +20,8 @@
     <div class="memory-card__meta">
       <span class="memory-card__mark" aria-hidden="true"></span>
       <time>{{ item().date }}</time>
+      <span class="memory-card__separator" aria-hidden="true">/</span>
+      <span>por {{ item().author }}</span>
     </div>
     <h3>{{ item().title }}</h3>
     <p>{{ item().text }}</p>
