@@ -1,4 +1,13 @@
-<article class="memory-card" [class]="'memory-card memory-card--' + item().tone">
+<article
+  class="memory-card"
+  [class]="'memory-card memory-card--' + item().tone"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="'Ver el recuerdo: ' + item().title"
+  (click)="openDetail()"
+  (keydown.enter)="openDetail()"
+  (keydown.space)="$event.preventDefault(); openDetail()"
+>
   @if (item().image) {
     <img
       class="memory-card__image"

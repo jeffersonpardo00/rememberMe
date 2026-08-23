@@ -1,16 +1,18 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { Memory, MemoryItem } from '../memory/memory';
+import { MemoryDetail } from '../memory-detail/memory-detail';
 import { NewMemoryPayload } from '../new-memory/new-memory';
 
 @Component({
   selector: 'app-memories-gird',
-  imports: [Memory],
+  imports: [Memory, MemoryDetail],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './memories-gird.html',
   styleUrl: './memories-gird.scss'
 })
 export class MemoriesGird {
   readonly selectedFilter = signal<'all' | 'with-image' | 'notes'>('all');
+  readonly selectedMemory = signal<MemoryItem | undefined>(undefined);
 
   readonly memories = signal<readonly MemoryItem[]>([
     { id: 1, date: '12 Mayo 2025', author: 'Maya', title: 'El camino largo a casa', text: 'Perdimos el último tren y encontramos una panadería que abrió solo para nosotros.', image: 'https://picsum.photos/seed/remember-01/720/520', imageAlt: 'Luz cálida en una calle tranquila al anochecer', tone: 'clay' },
@@ -52,6 +54,14 @@ export class MemoriesGird {
       tone: 'sun'
     };
     this.memories.update((memories) => [memory, ...memories]);
+  }
+
+  openDetail(memory: MemoryItem): void {
+    this.selectedMemory.set(memory);
+  }
+
+  closeDetail(): void {
+    this.selectedMemory.set(undefined);
   }
 
 }

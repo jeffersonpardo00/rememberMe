@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 export interface MemoryItem {
   readonly id: number;
@@ -19,4 +19,9 @@ export interface MemoryItem {
 })
 export class Memory {
   readonly item = input.required<MemoryItem>();
+  readonly selected = output<MemoryItem>();
+
+  openDetail(): void {
+    this.selected.emit(this.item());
+  }
 }

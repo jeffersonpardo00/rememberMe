@@ -1,0 +1,27 @@
+<div class="detail-backdrop" role="presentation" (click)="closed.emit()">
+  <article class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title" (click)="$event.stopPropagation()">
+    @if (item().image) {
+      <div class="detail-modal__image-wrap">
+        <img class="detail-modal__image" [src]="item().image" [alt]="item().imageAlt || ''" />
+      </div>
+    }
+
+    <div class="detail-modal__content">
+      <header class="detail-modal__header">
+        <div>
+          <div class="detail-modal__meta">
+            <span class="detail-modal__mark" aria-hidden="true"></span>
+            <time>{{ item().date }}</time>
+            <span aria-hidden="true">/</span>
+            <span>por {{ item().author }}</span>
+          </div>
+          <h2 id="detail-title">{{ item().title }}</h2>
+        </div>
+        <button class="close-button" type="button" aria-label="Cerrar detalle" (click)="closed.emit()">×</button>
+      </header>
+
+      <p class="detail-modal__text">{{ item().text }}</p>
+      <button class="detail-modal__close" type="button" (click)="closed.emit()">Cerrar</button>
+    </div>
+  </article>
+</div>

@@ -10,7 +10,11 @@
 
   <div class="memories__grid">
     @for (memory of visibleMemories(); track memory.id) {
-      <app-memory [item]="memory" />
+      <app-memory [item]="memory" (selected)="openDetail($event)" />
     }
   </div>
 </section>
+
+@if (selectedMemory(); as memory) {
+  <app-memory-detail [item]="memory" (closed)="closeDetail()" />
+}
