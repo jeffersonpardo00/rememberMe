@@ -1,15 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-
-export interface MemoryItem {
-  readonly id: number;
-  readonly date: string;
-  readonly author: string;
-  readonly title: string;
-  readonly text: string;
-  readonly image?: string;
-  readonly imageAlt?: string;
-  readonly tone: 'sun' | 'clay' | 'mint' | 'sky' | 'rose';
-}
+import { MemoryItem } from '../../Models/memoryModel';
 
 @Component({
   selector: 'app-memory',
@@ -25,3 +15,4 @@ export class Memory {
     this.selected.emit(this.item());
   }
 }
+

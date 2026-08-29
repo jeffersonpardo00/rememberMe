@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
-import { Memory, MemoryItem } from '../memory/memory';
+import { Memory } from '../memory/memory';
 import { MemoryDetail } from '../memory-detail/memory-detail';
 import { NewMemoryPayload } from '../new-memory/new-memory';
+import { MemoryItem } from '../../Models/memoryModel';
 
 @Component({
   selector: 'app-memories-gird',
@@ -13,7 +14,7 @@ import { NewMemoryPayload } from '../new-memory/new-memory';
 export class MemoriesGird {
   readonly selectedFilter = signal<'all' | 'with-image' | 'notes'>('all');
   readonly selectedMemory = signal<MemoryItem | undefined>(undefined);
-  readonly memories = input.required<any[]>();
+  readonly memories = input.required<MemoryItem[]>();
   
   /*public memories = signal<readonly MemoryItem[]>([
     { id: 1, date: '12 Mayo 2025', author: 'Maya', title: 'El camino largo a casa', text: 'Perdimos el último tren y encontramos una panadería que abrió solo para nosotros.', image: 'https://picsum.photos/seed/remember-01/720/520', imageAlt: 'Luz cálida en una calle tranquila al anochecer', tone: 'clay' },
@@ -40,21 +41,6 @@ export class MemoriesGird {
 
   setFilter(filter: 'all' | 'with-image' | 'notes'): void {
     this.selectedFilter.set(filter);
-  }
-
-addMemory(payload: NewMemoryPayload): void {
-    const today = new Intl.DateTimeFormat('es-ES', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date());
-    const memory: MemoryItem = {
-      id: Date.now(),
-      date: today,
-      author: payload.author || 'Anónimo',
-      title: payload.title || 'Un momento para recordar',
-      text: payload.text,
-      image: payload.imagePreview,
-      imageAlt: payload.title || 'Imagen de un recuerdo',
-      tone: 'sun'
-    };
-   // this.memories.update((memories) => [memory, ...memories]);
   }
 
   openDetail(memory: MemoryItem): void {
