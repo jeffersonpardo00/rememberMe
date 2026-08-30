@@ -32,7 +32,6 @@ export class SupabaseService {
     const { data, error } = await this.supabase
       .from('memories')
       .select('*')
-      .eq('approved', true)
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -98,7 +97,7 @@ export class SupabaseService {
         throw error;
       }
 
-      return data.path;
+      return data.fullPath;
     }
 
     return null;
