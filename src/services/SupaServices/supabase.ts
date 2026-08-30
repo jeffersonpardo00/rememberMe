@@ -55,9 +55,10 @@ export class SupabaseService {
 
 
   async createMemory(
-    author: string | undefined,
     message: string,
-    imageFile?: File | undefined
+    author?: string | undefined,
+    title?: string| undefined,
+    imageFile?: File | undefined,
   ) {
 
     const image_path_raw = await this.uploadPhoto(imageFile);
@@ -70,7 +71,8 @@ export class SupabaseService {
         author: author,
         message: message,
         image_file_path: image_path,
-        approved: false
+        approved: false,
+        title: title
       });
 
     if (error) {

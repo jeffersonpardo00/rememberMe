@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject, 
 import { MemoriesGird } from '../memories-gird/memories-gird';
 import { NewMemory, NewMemoryPayload } from '../new-memory/new-memory';
 import { SupabaseService } from '../../services/SupaServices/supabase';
-import { MemoryItem, MemoryResponse } from '../../Models/memoryModel';
+import { MEMORY_TONES, MemoryItem, MemoryResponse } from '../../Models/memoryModel';
 
 @Component({
   selector: 'app-general-layout',
@@ -32,13 +32,16 @@ export class GeneralLayout implements OnInit {
     }
   }
 
-  private toMemoryItem(memoryResp: MemoryResponse): MemoryItem{
+  private toMemoryItem(memoryResp: MemoryResponse): MemoryItem {
+    const randomTone = MEMORY_TONES[Math.floor(Math.random() * MEMORY_TONES.length)];
+
     return {
       ...memoryResp,
-      imageAlt: 'nueva imagen', 
-      tone: 'sun'
-    }
-  } 
+      date: new Date(memoryResp.date),
+      imageAlt: memoryResp.title,
+      tone: randomTone
+    };
+  }
 
   openNewMemory(): void {
     this.isNewMemoryOpen.set(true);
@@ -51,8 +54,9 @@ export class GeneralLayout implements OnInit {
   async saveNewMemory(payload: NewMemoryPayload): Promise<void> {
     try {
       await this.supabaseService.createMemory(
-        payload.author,
         payload.text,
+        payload.author,
+        payload.title,
         payload.imageFile
       );
       await this.refreshMemories();

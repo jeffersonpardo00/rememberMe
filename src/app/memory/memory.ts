@@ -11,6 +11,16 @@ export class Memory {
   readonly item = input.required<MemoryItem>();
   readonly selected = output<MemoryItem>();
 
+  formatDate(date: Date | string): string {
+    const safeDate = new Date(date);
+
+    return new Intl.DateTimeFormat('es-ES', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(safeDate);
+  }
+
   openDetail(): void {
     this.selected.emit(this.item());
   }

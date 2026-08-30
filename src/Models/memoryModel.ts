@@ -1,6 +1,10 @@
+export const MEMORY_TONES = ['sun', 'clay', 'mint', 'sky', 'rose'] as const;
+
+export type MemoryTone = typeof MEMORY_TONES[number];
+
 export interface MemoryResponse {
   readonly id: string;
-  readonly date: string;
+  readonly date: Date | string;
   readonly author: string;
   readonly title: string;
   readonly text: string;
@@ -9,5 +13,5 @@ export interface MemoryResponse {
 
 export interface MemoryItem extends MemoryResponse {
   readonly imageAlt?: string;
-  readonly tone: 'sun' | 'clay' | 'mint' | 'sky' | 'rose';
+  readonly tone: MemoryTone;
 }
