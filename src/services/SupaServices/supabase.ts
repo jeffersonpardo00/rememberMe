@@ -52,6 +52,14 @@ export class SupabaseService {
     }
   }
 
+  getImageUrl(path: string): string {
+    const { data } = this.supabase
+      .storage
+      .from('memory_photos')
+      .getPublicUrl(path);
+
+    return data.publicUrl;
+  }
 
   async createMemory(
     message: string,
@@ -62,7 +70,7 @@ export class SupabaseService {
 
     const image_path_raw = await this.uploadPhoto(imageFile);
     let image_path = null;
-    if(image_path_raw) image_path  = image_path_raw;
+    if(image_path_raw) image_path  = this.getImageUrl(image_path_raw);
     
     const { data, error } = await this.supabase
       .from('memories')
@@ -97,7 +105,7 @@ export class SupabaseService {
         throw error;
       }
 
-      return data.fullPath;
+      return data.path;
     }
 
     return null;
