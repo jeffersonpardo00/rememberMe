@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { MemoryItem } from '../memory/memory';
+import { MemoryItem } from '../../Models/memoryModel';
 
 @Component({
   selector: 'app-memory-detail',
