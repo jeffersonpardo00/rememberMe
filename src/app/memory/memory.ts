@@ -21,6 +21,10 @@ export class Memory {
     }).format(safeDate);
   }
 
+  previewText(text: string): string {
+    return text.length > 280 ? `${text.slice(0, 280).trimEnd()}...` : text;
+  }
+
   openDetail(): void {
     this.selected.emit(this.item());
   }

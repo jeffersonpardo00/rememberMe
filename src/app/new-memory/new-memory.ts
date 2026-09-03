@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, output, signal } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { inject } from '@angular/core';
 
 export interface NewMemoryPayload {
@@ -8,6 +8,13 @@ export interface NewMemoryPayload {
   readonly text: string;
   readonly imageFile?: File;
   readonly imagePreview?: string;
+}
+
+function maxWords(maximum: number) {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const words = control.value.trim() ? control.value.trim().split(/\s+/).length : 0;
+    return words > maximum ? { maxWords: true } : null;
+  };
 }
 
 @Component({
@@ -26,13 +33,14 @@ export class NewMemory {
   readonly imagePreview = signal<string | undefined>(undefined);
 
   readonly memoryForm = this.formBuilder.nonNullable.group({
-    text: ['', [Validators.required, Validators.maxLength(280)]],
+    text: ['', [Validators.required, maxWords(300)]],
     title: ['', [Validators.maxLength(80)]],
     author: ['', [Validators.maxLength(50)]]
   });
 
-  get textLength(): number {
-    return this.memoryForm.controls.text.value.length;
+  get wordCount(): number {
+    const text = this.memoryForm.controls.text.value.trim();
+    return text ? text.split(/\s+/).length : 0;
   }
 
   onFileSelected(event: Event): void {
