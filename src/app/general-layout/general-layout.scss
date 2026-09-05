@@ -63,39 +63,47 @@
 
 .intro {
   gap: 3rem;
-  padding: 5.5rem 0 4rem;
+  padding: 2.5rem 0 2rem;
+}
+
+
+
+h2 { 
+  margin: 0; 
+  color: m.$white-letters; 
+  font-family: m.$main-title-font;
+  font-size: clamp(1rem, 4vw, 3.5rem);
+  line-height: 1.1;
+}
+
+h1 { 
+  margin: 0; 
+  margin-top: -0.5rem;
+  color: m.$accent-color; 
+  font-family: m.$script-letter-font;
+  font-size: clamp(3rem, 16vw, 12rem);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .eyebrow { 
   margin: 0 0 1.2rem; 
-  color: m.$main-dark-letter; 
-  font: 600 1rem 'Cormorant Garamond', Georgia, serif; 
-  letter-spacing: 0.08em;
-  text-transform: uppercase; 
+  color: m.$accent-color-sec; 
+  font-family: m.$cursive-letter-font;
   text-align: right;
+  font-size: clamp(0.5rem, 4vw, 2rem);
 }
 
-h1 { 
-  margin: 0; color: m.$white-letters; 
- /* font: 550 clamp(3.6rem, 8vw, 7.4rem)/0.85 'Fraunces',
-   Georgia, serif; letter-spacing: 0; */
-   font-family: m.$main-title-font;
-   font-size: clamp(3.6rem, 8vw, 7.4rem);
-   line-height: 1.4em;
-}
-
-h1 em { 
-  color: m.$accent-color; 
-  font-family: m.$script-letter-font;
-  font-size: clamp( 10rem, 8vw, 7.4rem);
-  
-}
 .intro__copy { max-width: 19rem; margin: 0 0 0.5rem; color: #33413d; font-size: 1.05rem; line-height: 1.6; }
 
 @media (max-width: 700px) {
   .page-shell { width: min(100% - 2rem, 580px); padding-top: 1.25rem; }
   .page-header { grid-template-columns: 1fr auto; padding-bottom: 1.5rem; }
   .page-header__date { display: none; }
-  .intro { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 0 3rem; }
-  h1 { font-size: clamp(4rem, 18vw, 6rem); }
+  .intro { 
+    grid-template-columns: 1fr; 
+    gap: 2rem; 
+    padding: 1.5rem 0 0.5rem;
+  }
 }

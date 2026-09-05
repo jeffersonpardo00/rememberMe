@@ -1,14 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..900&family=Lobster&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
 
 $background-color: #1082D9;
 $white-letters: #CFCED0;
 $main-dark-letter: #32271e;
 $accent-color: #D13E2F;
-$accent-color-sec: #E8A628;
+$accent-color-sec: #e1c622;
 
 $main-title-font: 'Yeseva One', serif;
 $script-letter-font: 'Lobster', cursive;
+$cursive-letter-font: 'Style Script', cursive;
+$cursive-letter-font0: 'Kaushan Script', cursive;
+$cursive-letter-font1: 'Bad Script', cursive;
 
 :root {
 	color: #1c2522;
