@@ -1,3 +1,5 @@
+@use '../../styles.scss' as m;
+
 :host {
   display: block;
   min-height: 100%;
@@ -22,7 +24,7 @@
   align-items: center;
   gap: 0.65rem;
   width: fit-content;
-  color: #1c2522;
+  color: m.$white-letters;
   font: 600 1.25rem 'Cormorant Garamond', Georgia, serif;
   letter-spacing: 0;
   text-decoration: none;
@@ -39,10 +41,25 @@
   font: 700 1rem 'Cormorant Garamond', Georgia, serif;
 }
 
-.brand__accent { color: #db6b45; }
-.page-header__date { margin: 0; color: #42514c; font: 600 0.8rem 'Cormorant Garamond', Georgia, serif; text-align: center; text-transform: uppercase; letter-spacing: 0.08em; }
-.add-button { justify-self: end; border: 0; background: none; color: #1c2522; cursor: pointer; font: 600 0.8rem 'Cormorant Garamond', Georgia, serif; }
-.add-button:first-letter { color: #db6b45; font-size: 1.4rem; }
+.brand__accent { color: m.$accent-color; }
+.page-header__date { 
+  margin: 0; 
+  color: m.$main-dark-letter; 
+  font: Bold 1rem 'Cormorant Garamond', Georgia, serif; 
+  text-align: center; 
+  text-transform: uppercase; 
+  letter-spacing: 0.08em; }
+.add-button { 
+  justify-self: end; 
+  border: 0; background: none; 
+  color: m.$white-letters; 
+  cursor: pointer; 
+  font: 600 0.8rem 'Cormorant Garamond', Georgia, serif; 
+}
+.add-button:first-letter { 
+  color: m.$accent-color; 
+  font-size: 1.4rem; 
+}
 
 .intro {
   gap: 3rem;
@@ -51,21 +68,28 @@
 
 .eyebrow { 
   margin: 0 0 1.2rem; 
-  color: #db6b45; 
-  font: 600 0.8rem 'Cormorant Garamond', Georgia, serif; 
+  color: m.$main-dark-letter; 
+  font: 600 1rem 'Cormorant Garamond', Georgia, serif; 
   letter-spacing: 0.08em;
   text-transform: uppercase; 
   text-align: right;
 }
 
 h1 { 
-  margin: 0; color: #1c2522; 
-  font: 550 clamp(3.6rem, 8vw, 7.4rem)/0.85 'Fraunces',
-   Georgia, serif; letter-spacing: 0; 
-   line-height: 1em;
+  margin: 0; color: m.$white-letters; 
+ /* font: 550 clamp(3.6rem, 8vw, 7.4rem)/0.85 'Fraunces',
+   Georgia, serif; letter-spacing: 0; */
+   font-family: m.$main-title-font;
+   font-size: clamp(3.6rem, 8vw, 7.4rem);
+   line-height: 1.4em;
 }
 
-h1 em { color: #db6b45; font-weight: 400; }
+h1 em { 
+  color: m.$accent-color; 
+  font-family: m.$script-letter-font;
+  font-size: clamp( 10rem, 8vw, 7.4rem);
+  
+}
 .intro__copy { max-width: 19rem; margin: 0 0 0.5rem; color: #33413d; font-size: 1.05rem; line-height: 1.6; }
 
 @media (max-width: 700px) {
