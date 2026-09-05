@@ -1,4 +1,4 @@
-export const MEMORY_TONES = ['sun', 'clay', 'mint', 'sky', 'rose'] as const;
+export const MEMORY_TONES = ['sun', 'mint', 'sky', 'rose'] as const;
 
 export type MemoryTone = typeof MEMORY_TONES[number];
 

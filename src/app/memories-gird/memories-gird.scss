@@ -35,6 +35,7 @@
   cursor: pointer;
   letter-spacing: 0.01em;
   transition: background 160ms ease, color 160ms ease;
+  font-family: m.$main-title-font;
 }
 
 .memories__filters button:hover,
@@ -42,7 +43,6 @@
   border-color: #242c27;
   background: #242c27;
   color: #f8f6ef;
-  font-family: m.$main-title-font;
 }
 
 .memories__grid {
