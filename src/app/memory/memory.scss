@@ -41,7 +41,9 @@
   align-items: center;
   gap: 0.5rem;
   color: #474747;
-  font: 600 0.7rem/1.2 'DM Mono', monospace;
+  font-family: m.$metadata-font;
+  font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
