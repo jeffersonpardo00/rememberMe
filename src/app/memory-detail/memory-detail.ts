@@ -10,4 +10,12 @@ import { MemoryItem } from '../../Models/memoryModel';
 export class MemoryDetail {
   readonly item = input.required<MemoryItem>();
   readonly closed = output<void>();
+
+  formatDate(date: Date | string): string {
+    return new Intl.DateTimeFormat('es-ES', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(new Date(date));
+  }
 }

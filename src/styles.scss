@@ -1,9 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400..900&family=Lobster&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Style+Script&display=swap');
+
+
+$background-color: #1082D9;
+$white-letters: #CFCED0;
+$accent-color: #D13E2F;
+$accent-color-sec: #e1c622;
+
+$main-title-font: 'Yeseva One', serif;
+$script-letter-font: 'Lobster', cursive;
+$cursive-letter-font: 'Style Script', cursive;
+$content-font: 'Manrope', 'Segoe UI', sans-serif;
+$metadata-font: 'DM Mono', monospace;
 
 :root {
 	color: #1c2522;
-	background: #f1efe7;
-	font-family: 'Manrope', 'Segoe UI', sans-serif;
+	background: $background-color;
+	font-family: $content-font;
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 }
@@ -14,7 +28,7 @@ html, body { min-height: 100%; }
 
 body {
 	margin: 0;
-	background: #f1efe7;
+	background: $background-color;
 	color: #1c2522;
 }
 

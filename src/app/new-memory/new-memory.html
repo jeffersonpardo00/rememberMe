@@ -11,14 +11,14 @@
     <form [formGroup]="memoryForm" (ngSubmit)="submit()">
       <label class="field">
         <span>¿Qué quieres recordar? <small>Obligatorio</small></span>
-        <textarea formControlName="text" maxlength="280" rows="5" placeholder="Escribe algo para tu yo del futuro..."></textarea>
+        <textarea formControlName="text" rows="5" placeholder="Escribe un recuerdo que te haga sonreír..."></textarea>
         <span class="field__footer">
           @if (memoryForm.controls.text.invalid && memoryForm.controls.text.touched) {
-            <small class="error">Escribe un recuerdo de hasta 280 caracteres.</small>
+            <small class="error">Escribe un recuerdo de hasta 300 palabras.</small>
           } @else {
             <small>Un instante también puede ser suficiente.</small>
           }
-          <small>{{ textLength }}/280</small>
+          <small>{{ wordCount }}/300 palabras</small>
         </span>
       </label>
 
