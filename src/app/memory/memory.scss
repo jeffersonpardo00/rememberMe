@@ -1,3 +1,5 @@
+@use '../../styles.scss' as m;
+
 :host {
   display: block;
   break-inside: avoid;
@@ -57,7 +59,7 @@
 
 .memory-card h3 {
   margin: 0.75rem 0 0.45rem;
-  font: 600 1.45rem/1.05 'Fraunces', Georgia, serif;
+  font-family: m.$main-title-font;
   letter-spacing: 0;
   color: #1c2522;
 }
@@ -65,7 +67,6 @@
 .memory-card p {
   margin: 0;
   color: #2d3a35;
-  font: 0.95rem/1.55 'Manrope', 'Segoe UI', sans-serif;
 }
 
 .memory-card--sun { background: #f7e6a4; }
